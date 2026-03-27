@@ -55,6 +55,9 @@ h1,h2,h3,.brand{font-family:'Playfair Display',serif;}
   font-size:9px;color:var(--text3);transition:color 0.2s;
 }
 .nav-item.active{color:var(--gold);}
+  .gal-item {
+  position: relative;
+  }
 .ni{font-size:18px;line-height:1;}
 
 /* PAGES */
@@ -826,11 +829,12 @@ function uploadPhoto() {
   <div class="gal-img" style="background:#000;">
     <img src="${src}" style="width:100%;height:100%;object-fit:cover;aspect-ratio:1;">
   </div>
+
   <div class="gal-lbl">Your Uploads</div>
   <div class="ba">B/A</div>
 
   <button onclick="this.parentElement.remove()" 
-    style="margin-top:5px;background:red;color:white;border:none;padding:5px;">
+    style="position:absolute;bottom:5px;left:5px;background:red;color:white;border:none;padding:5px;z-index:999;">
     Delete
   </button>
 `;
