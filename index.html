@@ -587,6 +587,8 @@ h1,h2,h3,.brand{font-family:'Playfair Display',serif;}
       <div style="font-size:12px;color:var(--text2);margin-top:4px;">Camera or Gallery • Share your transformation</div>
     </div>
     <div style="font-size:14px;font-weight:500;margin-bottom:12px;">Customer Transformations</div>
+   <input type="text" id="imgLink" placeholder="Image link paste karo">
+<button onclick="addImage()">Add</button> 
     <div class="gal-grid" id="galGrid">
       <div class="gal-item" onclick="openFull('💇','Vikas — Haircut')"><div class="gal-img">💇</div><div class="gal-lbl">Vikas — Haircut</div><div class="ba">B/A</div></div>
       <div class="gal-item" onclick="openFull('🧔','Ramesh — Beard')"><div class="gal-img">🧔</div><div class="gal-lbl">Ramesh — Beard</div><div class="ba">B/A</div></div>
@@ -1053,6 +1055,22 @@ buildContact();
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
+  </script>
+  <script>
+function addImage() {
+  const link = document.getElementById("imgLink").value;
+  if (!link) return;
+
+  const img = document.createElement("img");
+  img.src = link;
+  img.style.width = "100%";
+  img.style.borderRadius = "10px";
+  img.style.marginBottom = "10px";
+
+  document.getElementById("galGrid").appendChild(img);
+
+  document.getElementById("imgLink").value = "";
+}
   </script>
 </body>
 </html>
