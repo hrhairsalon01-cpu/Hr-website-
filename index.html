@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<script async
+  crossorigin="anonymous"
+  data-clerk-publishable-key="pk_test_Z29yZ2VvdXMta2F0eWRpZC0xOC5jbGVyay5hY2NvdW50cy5kZXYk"
+  src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js">
+</script>
+<head>
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>HR Hair Salon</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -414,7 +420,11 @@ h1,h2,h3,.brand{font-family:'Playfair Display',serif;}
 </style>
 </head>
 <body>
+<div id="user" 
+style="margin:10px;color:gold;"></div>
 
+<button onclick="login()">Login / Sign Up</button>
+<button onclick="logout()">Logout</button>
 <!-- STAR CANVAS -->
 <canvas id="bgc" style="position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:100%;pointer-events:none;z-index:0;opacity:0.45;"></canvas>
 
@@ -1072,5 +1082,33 @@ function addImage() {
   document.getElementById("imgLink").value = "";
 }
   </script>
+<script>
+
+async function login(){
+  await Clerk.load();
+  Clerk.openSignIn();
+}
+
+async function logout(){
+  await Clerk.load();
+  await Clerk.signOut();
+  location.reload();
+}
+
+async function checkUser(){
+  await Clerk.load();
+
+  if(Clerk.user){
+    document.getElementById("user").innerHTML =
+      "Welcome " + Clerk.user.primaryEmailAddress.emailAddress;
+  } else {
+    document.getElementById("user").innerHTML =
+      "Not logged in";
+  }
+}
+
+checkuser 
+
+</script>
 </body>
 </html>
